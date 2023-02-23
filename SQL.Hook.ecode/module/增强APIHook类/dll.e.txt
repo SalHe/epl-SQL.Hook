@@ -1,0 +1,9 @@
+﻿.版本 2
+
+.DLL命令 API_LoadLibraryA, 整数型, "kernel32", "LoadLibraryA", 公开
+    .参数 File, 文本型
+
+.DLL命令 API_GetProcAddress, 整数型, "kernel32", "GetProcAddress", 公开
+    .参数 hModule, 整数型
+    .参数 lpProcName, 文本型
+

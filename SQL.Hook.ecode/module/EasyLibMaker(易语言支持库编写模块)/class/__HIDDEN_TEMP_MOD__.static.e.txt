@@ -1,0 +1,801 @@
+﻿.版本 2
+
+.程序集 __HIDDEN_TEMP_MOD__, , 公开
+.子程序 Make_LIB_INFO, LIB_INFO, 公开, 生成库信息.
+    .参数 OldStruct, LIB_INFO, 可空
+    .参数 m_dwLibFormatVer, 整数型, 可空, 库格式号.
+    .参数 m_szGuid, 文本型, 可空, 标识符.
+    .参数 m_nMajorVersion, 整数型, 可空, 本库主版本号.必须大于0
+    .参数 m_nMinorVersion, 整数型, 可空, 本库次版本号.
+    .参数 m_nBuildNumber, 整数型, 可空, 构建版本号.
+    .参数 m_nRqSysMajorVer, 整数型, 可空, 系统主版本号.目前应该为 3
+    .参数 m_nRqSysMinorVer, 整数型, 可空, 系统次版本号.目前应该为 0
+    .参数 m_nRqSysKrnlLibMajorVer, 整数型, 可空, 核心支持库主版本号.目前应该为 3
+    .参数 m_nRqSysKrnlLibMinorVer, 整数型, 可空, 核心支持库次版本号.目前应该为 0
+    .参数 m_szName, 文本型, 可空, 库名.不能为NULL或空.
+    .参数 m_nLanguage, 整数型, 可空, 支持语言.1为中文,2为英文.
+    .参数 m_szExplain, 文本型, 可空, 库说明.
+    .参数 m_dwState, 整数型, 可空, 库状态.
+    .参数 m_szAuthor, 文本型, 可空, 作者姓名.
+    .参数 m_szZipCode, 文本型, 可空, 邮政编码.
+    .参数 m_szAddress, 文本型, 可空, 通信地址.
+    .参数 m_szPhoto, 文本型, 可空, 电话号码.
+    .参数 m_szFax, 文本型, 可空, 传真号码.
+    .参数 m_szEmail, 文本型, 可空, 电子信箱.
+    .参数 m_szHomePage, 文本型, 可空, 主页地址.
+    .参数 m_szOther, 文本型, 可空, 其它信息.
+    .参数 m_nDataTypeCount, 整数型, 可空, 自定义数据类型数.
+    .参数 m_pDataType, 字节集, 可空, 自定义数据类型信息.
+    .参数 m_nCategoryCount, 整数型, 可空, 全局命令类别数.
+    .参数 m_szzCategory, 字节集, 可空, 全局命令类别表.
+    .参数 m_nCmdCount, 整数型, 可空, 命令数目.
+    .参数 m_pBeginCmdInfo, 字节集, 可空, 命令信息.
+    .参数 m_pCmdsFunc, 整数型, 可空, 命令地址表.
+    .参数 m_pfnRunAddInFn, 整数型, 可空, 附加功能子程序
+    .参数 m_szzAddInFnInfo, 字节集, 可空, 附加功能信息.
+    .参数 m_pfnNotify, 整数型, 可空, 通知信息函数.
+    .参数 m_pfnSuperTemplate, 整数型, 可空, 超级模板.
+    .参数 m_szzSuperTemplateInfo, 整数型, 可空, 模板说明.
+    .参数 m_nLibConstCount, 整数型, 可空, 常量数目.
+    .参数 m_pLibConst, 字节集, 可空, 常量定义.
+    .参数 m_szzDependFiles, 整数型, 可空, 依赖文件.
+
+    
+
+.子程序 CallN, 整数型, 公开, 调用子程序.
+    .参数 pFunc, 整数型, , 子程序指针.
+    .参数 Args, 整数型, 可空 数组, 参数.
+    .参数 isCdecall, 逻辑型, 可空, 是否为C调用.
+
+    
+
+.子程序 CallN_15, 整数型, 公开, 调用子程序.与 Call10() 不同的是,Call10() 直接置入代码,而本函数会调用 CallN()
+    .参数 pFunc, 整数型, , 子程序指针.
+    .参数 isCdecall, 逻辑型, 可空, 是否为C调用.
+    .参数 Arg1, 整数型, 可空, 参数.
+    .参数 Arg2, 整数型, 可空, 参数.
+    .参数 Arg3, 整数型, 可空, 参数.
+    .参数 Arg4, 整数型, 可空, 参数.
+    .参数 Arg5, 整数型, 可空, 参数.
+    .参数 Arg6, 整数型, 可空, 参数.
+    .参数 Arg7, 整数型, 可空, 参数.
+    .参数 Arg8, 整数型, 可空, 参数.
+    .参数 Arg9, 整数型, 可空, 参数.
+    .参数 Arg10, 整数型, 可空, 参数.
+    .参数 Arg11, 整数型, 可空, 参数.
+    .参数 Arg12, 整数型, 可空, 参数.
+    .参数 Arg13, 整数型, 可空, 参数.
+    .参数 Arg14, 整数型, 可空, 参数.
+    .参数 Arg15, 整数型, 可空, 参数.
+
+    
+
+.子程序 Call10, 整数型, 公开, 调用子程序十参.
+    .参数 pFunc, 整数型
+    .参数 Arg1, 整数型, , 参数一.
+    .参数 Arg2, 整数型, 可空, 参数二.
+    .参数 Arg3, 整数型, 可空, 参数三.
+    .参数 Arg4, 整数型, 可空, 参数四.
+    .参数 Arg5, 整数型, 可空, 参数五.
+    .参数 Arg6, 整数型, 可空, 参数六.
+    .参数 Arg7, 整数型, 可空, 参数七.
+    .参数 Arg8, 整数型, 可空, 参数八.
+    .参数 Arg9, 整数型, 可空, 参数九.
+    .参数 Arg10, 整数型, 可空, 参数十.
+
+    
+
+.子程序 GetVarPointer, 整数型, 公开, 取变量指针.
+    .参数 Var, 通用型
+
+    
+
+.子程序 GetVarPointer2, 整数型, 公开, 取变量指针.多了参考属性.
+    .参数 Var, 通用型, 参考
+
+    
+
+.子程序 GetVarArryPointer, 整数型, 公开, 取数组指针.
+    .参数 Var, 通用型, 参考 数组
+
+    
+
+.子程序 GetBinPointer, 整数型, 公开, 取字节集地址.
+    .参数 Bin, 字节集, 参考
+
+    
+
+.子程序 GetStringPointer, 整数型, 公开, 取文本型地址.
+    .参数 String, 文本型, 参考
+
+    
+
+.子程序 PointerToInt, 整数型, 公开, 指针到整数.
+    .参数 Point, 整数型, , 指针.
+
+    
+
+.子程序 ControlPointer, 整数型, 公开, 指针到数据.返回值为目的变量原数据地址
+    .参数 SourceAddress, 整数型, , 源数据指针.
+    .参数 VarAddress, 整数型, , 目的变量地址.
+
+    
+
+.子程序 UnControlPointer, , 公开, 释放指针数据.
+    .参数 VarAddress, 整数型, , 变量地址.
+    .参数 SourceAddress, 整数型, , 原数据地址.
+
+    
+
+.子程序 WritePointerInt, , 公开, 写指针整数.写到内存(整数，地址,)
+    .参数 Address, 整数型, , 地址.
+    .参数 Value, 整数型, , 整数.
+
+    
+
+.子程序 WritePointerString, , 公开, 写指针文本.
+    .参数 Address, 整数型, , 地址.
+    .参数 String, 文本型, , 文本.
+    .参数 nLength, 整数型, 可空, 写入长度.
+
+    
+
+.子程序 WritePointerBin, , 公开, 写指针字节集.
+    .参数 Address, 整数型, , 地址.
+    .参数 Bin, 字节集, , 字节集.
+    .参数 nLength, 整数型, 可空, 写入长度.
+
+    
+
+.子程序 GetClassMemberPointer, 整数型, 公开, 取类成员指针.
+    .参数 pClass, 整数型, , 类指针.
+    .参数 nIndex, 整数型, , 成员索引.
+
+    
+
+.子程序 GetClassFuncAddress, 整数型, 公开, 生成类回调.只能在类里使用
+    .参数 nIndex, 整数型, , 方法序号.从1开始
+
+    
+
+.子程序 mAlloc, 整数型, 公开, 申请内存
+    .参数 Size, 整数型
+
+    
+
+.子程序 mFree, 逻辑型, 公开, 释放内存
+    .参数 lpMem, 整数型, , 内存地址
+
+    
+
+.子程序 GetVarArryContentPointer, 整数型, 公开, 取数组内容指针.
+    .参数 Var, 通用型, 参考 数组
+
+    
+
+.子程序 ChangeToCDecl, , 公开, 修改为C调用方式.
+    .参数 FuncPoint, 整数型, , 函数指针.
+
+    
+
+.子程序 Make_LIB_CONST_INFO, LIB_CONST_INFO, 公开, 生成库常量信息.
+    .参数 OldStruct, LIB_CONST_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 常量名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 常量说明.
+    .参数 m_shtLayout, 短整数型, 可空, 未知.
+    .参数 m_shtType, 短整数型, 可空, 常量类型.
+    .参数 m_szText, 文本型, 可空, 常量文本.
+    .参数 m_null, 整数型, 可空, 未知.
+    .参数 m_dbValue, 双精度小数型, 可空, 常量数值.
+
+    
+
+.子程序 Make_LIB_CONST_INFO_Num, LIB_CONST_INFO, 公开, 生成库常量信息_数值型.
+    .参数 OldStruct, LIB_CONST_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 常量名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 常量说明.
+    .参数 m_dbValue, 双精度小数型, 可空, 常量数值.
+
+    
+
+.子程序 Make_LIB_CONST_INFO_Text, LIB_CONST_INFO, 公开, 生成库常量信息_文本型.
+    .参数 OldStruct, LIB_CONST_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 常量名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 常量说明.
+    .参数 m_szText, 文本型, 可空, 常量文本.
+
+    
+
+.子程序 Make_LIB_CONST_INFO_Bool, LIB_CONST_INFO, 公开, 生成库常量信息_逻辑型.
+    .参数 OldStruct, LIB_CONST_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 常量名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 常量说明.
+    .参数 m_bValue, 逻辑型, 可空, 常量逻辑值.此结构中不包含本成员.
+
+    
+
+.子程序 CopyArryContent, 整数型, 公开, 复制数组内容.返回复制后指针.
+    .参数 pOld, 整数型, 参考 可空, 旧指针.用于储放复制内容的指针, 如此指针不为0, 将释放此指针.
+    .参数 Var, 通用型, 参考 数组, 欲拷贝数组.
+    .参数 nOneSize, 整数型, , 单个成员大小.
+
+    
+
+.子程序 MakePackConstInfos, 整数型, 公开, 包装常量信息.返回数目.
+    .参数 m_LibConsts, LIB_CONST_INFO, 数组, 常量信息.
+    .参数 m_pLibConst, 字节集, 参考, 常量定义.
+
+    
+
+.子程序 MakePackCmdInfos, 整数型, 公开, 包装命令信息.返回数目.
+    .参数 m_CmdInfos, CMD_INFO, 数组, 命令信息.
+    .参数 m_pBeginCmdInfo, 字节集, 参考, 命令信息字节集.
+
+    
+
+.子程序 Make_CMD_INFO, CMD_INFO, 公开, 生成命令信息.
+    .参数 OldStruct, CMD_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 命令中文名称.
+    .参数 m_szEgName, 文本型, 可空, 命令英文名称.可以为空或NULL
+    .参数 m_szExplain, 文本型, 可空, 命令详细解释.
+    .参数 m_shtCategory, 短整数型, 可空, 全局命令的所属类别.从1开始。
+    .参数 m_wState, 短整数型, 可空, 命令属性.
+    .参数 m_dtRetValType, 整数型, 可空, 返回值类型.
+    .参数 m_wReserved, 短整数型, 可空, 未用.
+    .参数 m_shtUserLevel, 短整数型, 可空, 用户学习难度级别.
+    .参数 m_shtBitmapIndex, 短整数型, 可空, 指定图像索引.从1开始,0表示无.
+    .参数 m_shtBitmapCount, 短整数型, 可空, 图像数目.(用作动画)
+    .参数 m_nArgCount, 整数型, 可空, 参数数目.
+    .参数 m_pBeginArgInfo, 整数型, 可空, 参数信息.
+
+    
+
+.子程序 Make_ARG_INFO, ARG_INFO, 公开, 生成参数信息.
+    .参数 OldStruct, ARG_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 参数名称.
+    .参数 m_szExplain, 文本型, 可空, 参数详细解释.
+    .参数 m_shtBitmapIndex, 短整数型, 可空, 指定图像索引.从1开始,0表示无.
+    .参数 m_shtBitmapCount, 短整数型, 可空, 图像数目.(用作动画).
+    .参数 m_dtType, 整数型, 可空, 参数类型.
+    .参数 m_nDefault, 整数型, 可空, 参数默认值.
+    .参数 m_dwState, 整数型, 可空, 参数属性.
+
+    
+
+.子程序 AutoCompleteStringFront, 文本型, 公开, 自动补充字符串前端.如果字符串达不到指定长度, 在其前端补充N个指定字符以达到这个长度, 为了美观, 仅此而已.
+    .参数 String, 文本型, , 欲处理字符串.
+    .参数 nDestLen, 整数型, , 目的长度.
+    .参数 char, 文本型, , 用于补充的字符.
+
+    
+
+.子程序 MakePackArgInfos, 整数型, 公开, 包装参数信息.返回数目.
+    .参数 m_ArgInfos, ARG_INFO, 数组, 命令信息.
+    .参数 m_bsArgInfos, 字节集, 参考, 命令信息.
+
+    
+
+.子程序 IsXXX, 逻辑型, 公开, 是否具有某属性.
+    .参数 nParent, 整数型, , 欲判断父属性.
+    .参数 nSub, 整数型, , 欲判断子属性.
+
+    
+
+.子程序 GetDataTypeType, 整数型, 公开, 取数据类型类别
+    .参数 m_dtDataType, 整数型, , 数据类型.
+
+    
+
+.子程序 GetDataType, 整数型, 公开, 取参数数据类型（库自定义类型返回序号）
+    .参数 m_dtDataType, 整数型, , 数据类型.
+
+    
+
+.子程序 GetDataTypeSize, 整数型, 公开, 取数据类型长度（非基本类型返回4）
+    .参数 DataType, 整数型, , 数据类型.
+
+    
+
+.子程序 GetAllArgs, , 公开, 取所有参数.
+    .参数 nArgCount, 整数型, , 参数数目.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+    .参数 Mdatas, MDATA_INF, 参考 数组, 参数信息.
+
+    
+
+.子程序 GetDimensionCountByTruePointer, 整数型, 公开, 取数组维数
+    .参数 pVar, 整数型, , 数组真实地址.
+
+    
+
+.子程序 GetElementCountByTruePointer, 整数型, 公开, 取数组成员数.
+    .参数 pVar, 整数型, , 数组真实地址.
+
+    
+
+.子程序 Return4Byte, , 公开, 返回四字节.字节型、短整数型、整数型、小数型、逻辑型、子程序指针.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 通用型, , 返回值.
+
+    
+
+.子程序 ReturnArry, , 公开, 返回数组.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 通用型, 数组, 返回值.
+    .参数 isReturnBak, 逻辑型, 可空, 是否返回副本.
+    .参数 isTextOrBin, 逻辑型, 可空, 是否为文本型或字节集.
+
+    
+
+.子程序 ReturnText, , 公开, 返回文本型.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 文本型, , 返回值.
+    .参数 isReturnBak, 逻辑型, 可空, 返回副本.
+
+    
+
+.子程序 Return8Byte, , 公开, 返回八字节.长整数型、双精度、日期时间型.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 通用型, , 返回值.
+
+    
+
+.子程序 ReturnBin, , 公开, 返回字节集.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 字节集, , 返回值.
+    .参数 isReturnBak, 逻辑型, 可空, 返回副本.
+
+    
+
+.子程序 SetDataType, , 公开, 置数据类型.
+    .参数 pMdataInf, 整数型, , 数据信息指针.
+    .参数 DataType, 整数型, , 欲置的数据类型.
+
+    
+
+.子程序 GetArgText, 文本型, 公开, 取参数文本型内容.
+    .参数 pArgInf, 整数型, , 参数信息指针.
+
+    
+
+.子程序 GetArgBin, 字节集, 公开, 取参数字节集内容.
+    .参数 pArgInf, 整数型, , 参数信息指针.
+
+    
+
+.子程序 CalcArgInfPointer, 整数型, 公开, 计算参数信息指针.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+    .参数 nIndex, 整数型, , 索引.
+
+    
+
+.子程序 ReturnValue, , 公开, 返回.针对复合类型.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 通用型, , 返回值.
+    .参数 isReturnBak, 逻辑型, 可空, 是否返回副本.
+
+    
+
+.子程序 MakePackDataTypeElementInfo, 整数型, 公开, 包装数据类型成员信息.返回数目.
+    .参数 m_DataTypeElementInfos, LIB_DATA_TYPE_ELEMENT, 数组, 数据类型成员信息.
+    .参数 m_bsDataTypeElementInfo, 字节集, 参考, 数据类型成员信息.
+
+    
+
+.子程序 MakeDataTypeInfos, 整数型, 公开, 包装数据类型信息.返回数目.
+    .参数 m_DataTypeInfos, LIB_DATA_TYPE_INFO, 数组, 自定义数据类型信息.
+    .参数 m_pDataType, 字节集, 参考, 自定义数据类型信息.
+
+    
+
+.子程序 Make_LIB_DATA_TYPE_INFO, LIB_DATA_TYPE_INFO, 公开, 生成数据类型信息.
+    .参数 OldStruct, LIB_DATA_TYPE_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 中文名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 详细解释.
+    .参数 m_nCmdCount, 整数型, 可空, 命令数目.
+    .参数 m_pnCmdsIndex, 整数型, 可空, 命令表索引数组.
+    .参数 m_dwState, 整数型, 可空, 类型属性.
+    .参数 m_dwUnitBmpID, 整数型, 可空, 图像资源ID.
+    .参数 m_nEventCount, 整数型, 可空, 事件数目.
+    .参数 m_pEventBegin, 整数型, 可空, 事件定义数组.
+    .参数 m_nPropertyCount, 整数型, 可空, 属性数目.
+    .参数 m_pPropertyBegin, 整数型, 可空, 属性定义数组.
+    .参数 m_pfnGetInterface, 整数型, 可空, 窗口单元接口函数.
+    .参数 m_nElementCount, 整数型, 可空, 成员个数.
+    .参数 m_pElementBegin, 整数型, 可空, 成员定义数组.
+
+    
+
+.子程序 Make_LIB_DATA_TYPE_INFO_Class, LIB_DATA_TYPE_INFO, 公开, 生成数据类型信息_类.针对类模块、自定义数据类型、枚举类型.
+    .参数 OldStruct, LIB_DATA_TYPE_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 中文名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 详细解释.
+    .参数 m_dwState, 整数型, 可空, 类型属性.
+    .参数 m_dwUnitBmpID, 整数型, 可空, 图像资源ID.
+
+    
+
+.子程序 Make_LIB_DATA_TYPE_ELEMENT, LIB_DATA_TYPE_ELEMENT, 公开, 生成数据类型成员信息.
+    .参数 OldStruct, LIB_DATA_TYPE_ELEMENT, 可空
+    .参数 m_dtType, 整数型, 可空, 数据类型.
+    .参数 m_pArySpec, 整数型, 可空, 数组维数定义串.
+    .参数 m_szName, 文本型, 可空, 中文名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 详细说明.
+    .参数 m_dwState, 整数型, 可空, 成员属性.
+    .参数 m_nDefault, 整数型, 可空, 默认值.
+
+    
+
+.子程序 Make_SpecialIntArry, 整数型, 公开, 生成一个特定格式数组.
+    .参数 ArySpec, 整数型, 数组, 数组信息.
+
+    
+
+.子程序 GetMemSize, 整数型, 公开, 取得内存块大小.
+    .参数 lpMem, 整数型, , 内存地址.
+
+    
+
+.子程序 GetBinByPointer, 字节集, 公开, 取字节集内容.
+    .参数 pBin, 整数型, , 字节集指针.
+
+    
+
+.子程序 IfNullFillValue, , 公开, 如果为空填充指定值.
+    .参数 pArgInf, 整数型, , 参数内容指针.
+    .参数 DefauleValue, 整数型, , 默认值.
+
+    
+
+.子程序 Get_Data, 整数型, 公开, 取MDATA_INF.m_Data.
+    .参数 pArgInf, 整数型, , 参数内容指针.
+
+    
+
+.子程序 ReturnAll, , 公开, 返回.通用命令.
+    .参数 pRetData, 整数型, , 返回值地址.
+    .参数 Value, 整数型, , 返回值.
+
+    
+
+.子程序 Make_UNIT_PROPERTY, UNIT_PROPERTY, 公开, 生成窗口组件属性定义信息.
+    .参数 OldStruct, UNIT_PROPERTY, 可空
+    .参数 m_szName, 文本型, 可空, 属性名称.
+    .参数 m_szEgName, 文本型, 可空, 属性英文名称.
+    .参数 m_szExplain, 文本型, 可空, 属性详细解释.
+    .参数 m_shtType, 短整数型, 可空, 属性的数据类型.
+    .参数 m_dwState, 短整数型, 可空, 属性属性.
+    .参数 m_szzPickStr, 字节集, 可空, 备选文本.
+
+    
+
+.子程序 MakePackUnitProperty, 整数型, 公开, 包装组件属性信息.返回数目.
+    .参数 m_UnitPropertyInfos, UNIT_PROPERTY, 数组, 组件属性信息.
+    .参数 m_bsUnitPropertyInfos, 字节集, 参考, 组件属性信息.
+
+    
+
+.子程序 Make_LIB_DATA_TYPE_INFO_Unit, LIB_DATA_TYPE_INFO, 公开, 生成数据类型信息_组件.针对组件.
+    .参数 OldStruct, LIB_DATA_TYPE_INFO, 可空
+    .参数 m_szName, 文本型, 可空, 中文名称.
+    .参数 m_szEgName, 文本型, 可空, 英文名称.
+    .参数 m_szExplain, 文本型, 可空, 详细解释.
+    .参数 m_dwState, 整数型, 可空, 类型属性.
+    .参数 m_dwUnitBmpID, 整数型, 可空, 图像资源ID.
+    .参数 m_pfnGetInterface, 整数型, 可空, 窗口单元接口函数.
+
+    
+
+.子程序 Make_EVENT_INFO2, EVENT_INFO2, 公开, 生成窗口组件事件定义信息.
+    .参数 OldStruct, EVENT_INFO2, 可空
+    .参数 m_szName, 文本型, 可空, 事件名称.
+    .参数 m_szExplain, 文本型, 可空, 事件详细解释.
+    .参数 m_dwState, 整数型, 可空, 事件属性.
+    .参数 m_nArgCount, 整数型, 可空, 事件参数数目.
+    .参数 m_pEventArgInfo, 整数型, 可空, 事件参数信息.
+    .参数 m_dtRetDataType, 整数型, 可空, 事件返回值类型.
+
+    
+
+.子程序 MakePackUnitEventArgInfo2, 整数型, 公开, 包装组件事件参数信息.返回数目.
+    .参数 m_UnitEventArgInfos, EVENT_ARG_INFO2, 数组, 组件事件参数信息.
+    .参数 m_bsUnitEventArgInfos, 字节集, 参考, 组件事件参数信息.
+
+    
+
+.子程序 MakePackUnitEventInfo2, 整数型, 公开, 包装组件事件信息.返回数目.
+    .参数 m_UnitEventInfos, EVENT_INFO2, 数组, 组件事件信息.
+    .参数 m_bsUnitEventInfos, 字节集, 参考, 组件事件信息.
+
+    
+
+.子程序 Make_EVENT_ARG_INFO2, EVENT_ARG_INFO2, 公开, 生成窗口组件事件参数定义信息.
+    .参数 OldStruct, EVENT_ARG_INFO2, 可空
+    .参数 m_szName, 文本型, 可空, 参数名称.
+    .参数 m_szExplain, 文本型, 可空, 参数详细解释.
+    .参数 m_dwState, 整数型, 可空, 参数属性.
+    .参数 m_dtDataType, 整数型, 可空, 参数类型.
+
+    
+
+.子程序 Make_EVENT_INFO2_Auto, EVENT_INFO2, 公开, 生成窗口组件事件定义信息.
+    .参数 OldStruct, EVENT_INFO2, 可空
+    .参数 m_szName, 文本型, 可空, 事件名称.
+    .参数 m_szExplain, 文本型, 可空, 事件详细解释.
+    .参数 m_dwState, 整数型, 可空, 事件属性.
+    .参数 m_nArgCount, 整数型, 可空, 事件参数数目.
+    .参数 m_pEventArgInfo, 整数型, 可空, 事件参数信息.
+    .参数 m_dtRetDataType, 整数型, 可空, 事件返回值类型.
+
+    
+
+.子程序 Make_UNIT_BASIC_INFO, UNIT_BASIC_INFO, 公开, 生成窗口控件基本信息.
+    .参数 OldStruct, UNIT_BASIC_INFO, 可空
+    .参数 hUnit, 整数型, 可空, 窗口CWND对象指针.
+    .参数 hWnd, 整数型, 可空, 窗口句柄.
+    .参数 pOldFunc, 整数型, 可空, 原窗口函数.
+    .参数 hParentWnd, 整数型, 可空, 父窗口句柄.
+    .参数 uID, 整数型, 可空, 控件ID.
+    .参数 hMenu, 整数型, 可空, 控件菜单.
+    .参数 dwWinFormID, 整数型, 可空, 易组件父窗口ID.
+    .参数 dwUnitID, 整数型, 可空, 易组件ID.
+    .参数 hDesignWnd, 整数型, 可空, 设计窗口句柄.
+    .参数 blInDesignMode, 逻辑型, 可空, 是否为设计模式.
+
+    
+
+.子程序 Make_RECT, <?未知本地类型?>, 公开, 生成矩形.
+    .参数 OldStruct, <?未知本地类型?>, 可空
+    .参数 left, 整数型, 可空, 左边.
+    .参数 top, 整数型, 可空, 顶边.
+    .参数 right, 整数型, 可空, 右边.
+    .参数 bottom, 整数型, 可空, 底边.
+
+    
+
+.子程序 GetHWndFromHUnit, 整数型, 公开, 取CWnd对象绑定窗口句柄.
+    .参数 hUnit, 整数型, , CWnd指针.
+
+    
+
+.子程序 SaveInfoToHUnit, , 公开, 保存信息到CWnd对象.
+    .参数 hUnit, 整数型, , CWnd指针.
+    .参数 pInfo, 整数型, , 信息指针.
+
+    
+
+.子程序 GetInfoFromHUnit, 整数型, 公开, 取信息自CWnd对象.
+    .参数 hUnit, 整数型, , CWnd指针.
+
+    
+
+.子程序 GetInfoFromHWnd, 整数型, 公开, 取信息自窗口句柄.
+    .参数 hWnd, 整数型, , 窗口句柄
+
+    
+
+.子程序 SaveInfoToHWnd, , 公开, 保存信息到窗口句柄.
+    .参数 hWnd, 整数型, , 窗口句柄
+    .参数 pInfo, 整数型, , 信息指针.
+
+    
+
+.子程序 GetStringLengthByPointer, 整数型, 公开, 取文本指针长度.
+    .参数 Point, 整数型, , 指针.
+
+    
+
+.子程序 PointerToLong, 长整数型, 公开, 指针到长整数.
+    .参数 Point, 整数型, , 指针.
+
+    
+
+.子程序 Make_EVENT_NOTIFY2, EVENT_NOTIFY2, 公开, 生成事件通知结构2.
+    .参数 OldStruct, EVENT_NOTIFY2, 可空
+    .参数 m_dwFormID, 整数型, 可空, 父窗口ID.
+    .参数 m_dwUnitID, 整数型, 可空, 组件ID.
+    .参数 m_nEventIndex, 整数型, 可空, 事件索引.
+    .参数 m_nArgCount, 整数型, 可空, 参数数目.
+    .参数 m_arg, EVENT_ARG_VALUE, 可空 数组, 各参数值.
+    .参数 m_blHasRetVal, 逻辑型, 可空, 是否提供了返回值.
+    .参数 m_infRetData, 整数型, 可空, 事件返回值.
+
+    
+
+.子程序 Make_EVENT_NOTIFY, EVENT_NOTIFY, 公开, 生成事件通知结构.
+    .参数 OldStruct, EVENT_NOTIFY, 可空
+    .参数 m_dwFormID, 整数型, 可空, 父窗口ID.
+    .参数 m_dwUnitID, 整数型, 可空, 组件ID.
+    .参数 m_nEventIndex, 整数型, 可空, 事件索引.
+    .参数 m_nArgCount, 整数型, 可空, 参数数目.
+    .参数 m_nArgValue1, 整数型, 可空, 参数1.
+    .参数 m_nArgValue2, 整数型, 可空, 参数2.
+    .参数 m_nArgValue3, 整数型, 可空, 参数3.
+    .参数 m_nArgValue4, 整数型, 可空, 参数4.
+    .参数 m_nArgValue5, 整数型, 可空, 参数5.
+    .参数 m_blHasReturnValue, 逻辑型, 可空, 是否提供了返回值.
+    .参数 m_nReturnValue, 整数型, 可空, 事件返回值.
+
+    
+
+.子程序 MakePicStr_PicSpecInt, 字节集, 公开, 生成备选文本_带数值.
+    .参数 Values, 整数型, 数组, 数值.
+    .参数 Texts, 文本型, 数组, 文本.
+
+    
+
+.子程序 MakePicStr_PicInt, 字节集, 公开, 生成备选文本_不带数值.
+    .参数 Texts, 文本型, 数组, 文本.
+
+    
+
+.子程序 DelegateLibCmdFunc, 整数型, 公开, 托管_库函数实现.
+    .参数 pRetData, 整数型, 可空, 返回值地址.
+    .参数 nArgCount, 整数型, , 参数个数.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+    .参数 pFuncDelagete, 整数型, , 托管处理函数.
+
+    
+
+.子程序 DelegateLibClassGetObjectPointer, 整数型, 公开, 取类对象指针.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+
+    
+
+.子程序 DelegateLibClassInitialize, , 公开, 托管_类构造函数.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+    .参数 Instance, 通用型, 参考, 保存结构.
+
+    
+
+.子程序 DelegateLibClassCopy, , 公开, 托管_类复制函数.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+
+    
+
+.子程序 DelegateLibClassFree, , 公开, 托管_类析构函数.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+
+    
+
+.子程序 DelegateLibObjGetInterface, 整数型, 公开, 托管_组件单元接口函数.
+    .参数 nInterfaceNO, 整数型, , 接口码.
+    .参数 pCreateUnit, 整数型, 可空, 创建单元.
+    .参数 pPropertyUpdateUI, 整数型, 可空, 说明属性目前可否被修改.
+    .参数 pDlgInitCustomizeData, 整数型, 可空, 使用对话框设置自定义数据
+    .参数 pNotifyPropertyChanged, 整数型, 可空, 通知某属性数据被修改.
+    .参数 pGetAllPropertyData, 整数型, 可空, 取全部属性数据.
+    .参数 pGetPropertyDate, 整数型, 可空, 取某属性数据.
+    .参数 pGetIconPropertyData, 整数型, 可空, 取窗口的图标属性数据.
+    .参数 pIsNeedThisKey, 整数型, 可空, 询问单元是否需要指定的按键信息.
+    .参数 pLangCnv, 整数型, 可空, 组件数据语言转换.
+    .参数 pMsgFilter, 整数型, 可空, 消息过滤.
+    .参数 pGetNotifyReceiver, 整数型, 可空, 处理额外通知.
+
+    
+
+.子程序 DelegateLibObjGetInterfaceBySubPtr, 整数型, 公开, 托管_组件单元接口函数.
+    .参数 nInterfaceNO, 整数型, , 接口码.
+    .参数 pCreateUnit, 子程序指针, 可空, 创建单元.
+    .参数 pPropertyUpdateUI, 子程序指针, 可空, 说明属性目前可否被修改.
+    .参数 pDlgInitCustomizeData, 子程序指针, 可空, 使用对话框设置自定义数据
+    .参数 pNotifyPropertyChanged, 子程序指针, 可空, 通知某属性数据被修改.
+    .参数 pGetAllPropertyData, 子程序指针, 可空, 取全部属性数据.
+    .参数 pGetPropertyDate, 子程序指针, 可空, 取某属性数据.
+    .参数 pGetIconPropertyData, 子程序指针, 可空, 取窗口的图标属性数据.
+    .参数 pIsNeedThisKey, 子程序指针, 可空, 询问单元是否需要指定的按键信息.
+    .参数 pLangCnv, 子程序指针, 可空, 组件数据语言转换.
+    .参数 pMsgFilter, 子程序指针, 可空, 消息过滤.
+    .参数 pGetNotifyReceiver, 子程序指针, 可空, 处理额外通知.
+
+    
+
+.子程序 DelegateLibObjInfoSave, , 公开, 托管_组件信息保存.
+    .参数 hWnd, 整数型, , 组件句柄.
+    .参数 Instance, 通用型, 参考, 保存结构.
+
+    
+
+.子程序 DelegateLibObjInfoFree, , 公开, 托管_组件信息释放.
+    .参数 hWnd, 整数型, , 组件句柄.
+
+    
+
+.子程序 CreateFuncControl, UNIT_BASIC_INFO, 公开, 创建功能性组件.
+    .参数 dwUnitBmpID, 整数型, , 图片资源.
+    .参数 dwStyle, 整数型, , 窗口风格.
+    .参数 hParentWnd, 整数型, , 父窗口句柄.
+    .参数 uID, 整数型, , 控件ID.
+    .参数 hMenu, 整数型, , 控件菜单.
+    .参数 x, 整数型, , 左边.
+    .参数 y, 整数型, , 顶边.
+    .参数 cx, 整数型, , 宽度.
+    .参数 cy, 整数型, , 高度.
+    .参数 dwWinFormID, 整数型, , 易组件父窗口ID.控件的父窗口在易系统中的ID值
+    .参数 dwUnitID, 整数型, , 易组件ID.控件在易系统中的ID值
+    .参数 hDesignWnd, 整数型, , 设计窗口句柄.如果blInDesignMode为真，则hDesignWnd提供设计窗口的句柄.
+    .参数 blInDesignMode, 逻辑型, , 是否为设计模式.当前在设计状态还是在运行状态
+    .参数 hInstance, 整数型, , 实例句柄.
+    .参数 lpParam, 整数型, 可空
+
+    
+
+.子程序 DelegateWndProc_FuncControl, 逻辑型, 公开, 托管_功能性窗口消息处理.如果组件需要删除返回真
+    .参数 UnitBasicInfo, UNIT_BASIC_INFO, , 组件基本信息.
+    .参数 hWnd, 整数型
+    .参数 uMsg, 整数型
+    .参数 wParam, 整数型
+    .参数 lParam, 整数型
+
+    
+
+.子程序 CreateContainerControl, UNIT_BASIC_INFO, 公开, 创建一个容器窗口
+    .参数 isTransparent, 逻辑型, 可空, 是否透明
+    .参数 dwStyle, 整数型, , 窗口风格.
+    .参数 hParentWnd, 整数型, , 父窗口句柄.
+    .参数 uID, 整数型, , 控件ID.
+    .参数 hMenu, 整数型, , 控件菜单.
+    .参数 x, 整数型, , 左边.
+    .参数 y, 整数型, , 顶边.
+    .参数 cx, 整数型, , 宽度.
+    .参数 cy, 整数型, , 高度.
+    .参数 dwWinFormID, 整数型, , 易组件父窗口ID.控件的父窗口在易系统中的ID值
+    .参数 dwUnitID, 整数型, , 易组件ID.控件在易系统中的ID值
+    .参数 hDesignWnd, 整数型, , 设计窗口句柄.如果blInDesignMode为真，则hDesignWnd提供设计窗口的句柄.
+    .参数 blInDesignMode, 逻辑型, , 是否为设计模式.当前在设计状态还是在运行状态
+    .参数 hInstance, 整数型, , 实例句柄.
+    .参数 lpParam, 整数型, 可空
+
+    
+
+.子程序 DelegateWndProc_ContainerControl, 逻辑型, 公开, 托管_消息预处理_容器窗口.如果组件需要删除返回真
+    .参数 UnitBasicInfo, UNIT_BASIC_INFO, , 组件基本信息.
+    .参数 hChild, 整数型
+    .参数 uMsg, 整数型, 参考
+    .参数 wParam, 整数型, 参考
+    .参数 lParam, 整数型, 参考
+    .参数 isCtrlWndSize, 逻辑型, 可空, 控制子窗口大小.如果设置为真, 当容器大小改变时, 子控件也跟着改变.默认真
+    .参数 WinPosInfo, <?未知本地类型?>, 参考 可空
+
+    
+
+.子程序 WndProc_TransparentContainer, 整数型, 公开, 窗口过程_透明容器.
+    .参数 hWnd, 整数型
+    .参数 uMsg, 整数型
+    .参数 wParam, 整数型
+    .参数 lParam, 整数型
+
+    
+
+.子程序 DelegateWndProc_ContainerChild, 逻辑型, 公开, 托管_消息预处理_容器窗口子控件.通知易语言一些非功能控件都有的事件, 这样易语言才可以处理某些事件(比如说按钮, 在被单击下面不是有些事件么, 就是那些).如果事件被处理的话返回真.
+    .参数 UnitBasicInfo, UNIT_BASIC_INFO, , 组件基本信息.
+    .参数 LibCurrentInfo, ELibMaker, , 当前库.
+    .参数 hChild, 整数型
+    .参数 uMsg, 整数型, 参考
+    .参数 wParam, 整数型, 参考
+    .参数 lParam, 整数型, 参考
+
+    
+
+.子程序 SGetWindowTextA, 文本型, 公开, 取窗口标题.
+    .参数 hWnd, 整数型, , 窗口句柄.
+
+    
+
+.子程序 PointerToDouble, 双精度小数型, 公开, 指针到双精度.
+    .参数 Point, 整数型, , 指针.
+
+    
+
+.子程序 PointerToFloat, 小数型, 公开, 指针到小数型.
+    .参数 Point, 整数型, , 指针.
+
+    
+

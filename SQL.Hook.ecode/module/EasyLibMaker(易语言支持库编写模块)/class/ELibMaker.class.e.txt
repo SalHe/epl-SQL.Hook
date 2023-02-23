@@ -1,0 +1,212 @@
+﻿.版本 2
+
+.程序集 ELibMaker, , 公开, 库信息封装.
+.子程序 Callback_RunAddInFunc, , 公开, 附件功能回调函数.主要供给易语言调用.
+    .参数 nIndex, 整数型, , 功能索引.
+
+    
+
+.子程序 GetLibInfo, LIB_INFO, 公开, 取库信息.
+    
+
+.子程序 SetLibInfo, , 公开, 置库信息.
+    .参数 LibInfo, LIB_INFO, , 库信息.
+
+    
+
+.子程序 MakePackLibInfo, , 公开, 包装信息.当库信息被改动后必须调用此函数, 此函数建议在支持库信息定义完之后调用.
+    
+
+.子程序 GetLibFileName, 文本型, 公开, 取库文件名.
+    
+
+.子程序 SetLibFileName, , 公开, 置库文件名.
+    .参数 szLibFileName, 文本型, , 库文件名.
+
+    
+
+.子程序 GetLibNotifyFuncName, 文本型, 公开, 取库通知函数名.
+    
+
+.子程序 SetLibNotifyFuncName, , 公开, 置库通知函数名.
+    .参数 szLibNotifyFuncName, 文本型, , 库通知函数名.
+
+    
+
+.子程序 SetDependentLibs, , 公开, 置依赖库列表.
+    .参数 strDependentLibs, 文本型, 数组, 依赖库列表.为依赖文件的文件名, 比如支持库的名字为 xxx.fne, 那么这些依赖文件要放入 易语言\static_lib\xxx 中; 只需要指定相对路径(相对于 static_lib)即可.
+
+    
+
+.子程序 GetLibInfoPointer, 整数型, 公开, 取库信息指针.
+    
+
+.子程序 GetFuncNamesPointer, 整数型, 公开, 取函数名列表地址.
+    
+
+.子程序 GetCmdsFuncPointer, 整数型, 公开, 取命令实现函数地址.
+    
+
+.子程序 DelegateProcessNotifyLib, 整数型, 公开, 托管_支持库信息通知函数.可用此函数处理.在导出函数时库信息通知函数名应为 libFileName_ProcessNotifyLib.
+    .参数 nMsg, 整数型
+    .参数 dwParam1, 整数型
+    .参数 dwParam2, 整数型
+
+    
+
+.子程序 AddConst, 整数型, 公开, 添加常量信息.
+    .参数 ConstInfo, LIB_CONST_INFO
+
+    
+
+.子程序 AddCategory, 整数型, 公开, 添加命令类别.
+    .参数 nBitmapIndex, 整数型, 可空, 指定图像索引.用于显示在命令列表前.
+    .参数 szCategoryName, 文本型, 可空, 类别名称.
+
+    
+
+.子程序 AddCmd, 整数型, 公开, 添加命令信息.
+    .参数 CmdInfo, CMD_INFO, , 命令信息.
+    .参数 pFuncCmd, 整数型, 可空, 命令实现函数.FuncCmd([整数型] pRetData/* 返回值地址, MDATA_INF指针 */, [整数型] nArgCount/* 参数个数 */, [整数型] pArgInf/* 首参数信息指针, MDATA_INF指针 */)
+    .参数 szFuncName, 文本型, 可空, 命令导出函数名.静态库必须.
+
+    
+
+.子程序 AddCmdFunc, 整数型, 公开, 添加命令实现函数.
+    .参数 pFuncCmd, 整数型, 可空, 命令实现函数.FuncCmd([整数型] pRetData/* 返回值地址, MDATA_INF指针 */, [整数型] nArgCount/* 参数个数 */, [整数型] pArgInf/* 首参数信息指针, MDATA_INF指针 */)
+
+    
+
+.子程序 AddCmdFuncName, 整数型, 公开, 添加命令实现函数名.
+    .参数 szFuncName, 文本型, 可空, 命令导出函数名.静态库必须.
+
+    
+
+.子程序 AddArg, 整数型, 公开, 添加参数.先添加命令信息再对相应命令添加参数信息.返回零添加失败.
+    .参数 ArgInfo, ARG_INFO, , 参数信息.
+
+    
+
+.子程序 AddDataType, 整数型, 公开, 添加数据类型.
+    .参数 DataTypeInfo, LIB_DATA_TYPE_INFO, , 数据类型信息.
+
+    
+
+.子程序 AddElement, 整数型, 公开, 添加类型成员.对组件无效.返回零添加失败.
+    .参数 DataTypeElementInfo, LIB_DATA_TYPE_ELEMENT, , 数据类型成员.
+
+    
+
+.子程序 AddUnitProperty, 整数型, 公开, 添加组件属性.
+    .参数 UnitProperty, UNIT_PROPERTY, , 组件属性.
+
+    
+
+.子程序 AddUnitBaseProperty, 整数型, 公开, 添加组件基本属性.每个组件必须的属性.
+    
+
+.子程序 AddUnitEventInfo2, 整数型, 公开, 添加组件事件.
+    .参数 EventInfo2, EVENT_INFO2, , 事件信息.
+
+    
+
+.子程序 AddUnitEventArgInfo2, 整数型, 公开, 添加组件事件参数.
+    .参数 EventArgInfo2, EVENT_ARG_INFO2, , 事件参数信息.
+
+    
+
+.子程序 SetDataTypeCmdIndexs, 整数型, 公开, 设置数据类型命令索引.
+    .参数 nClassIndex, 整数型, , 类索引.
+    .参数 m_nCmdCount, 整数型, 可空, 命令数目.
+    .参数 m_pnCmdsIndex, 整数型, 数组, 命令表索引数组.从0开始.
+    .参数 isSub, 逻辑型, 可空, 是否减一.如果为真, 自动将 m_pnCmdsIndex 每个成员减1.
+
+    
+
+.子程序 AddRunAddInFn, 整数型, 公开, 添加附加功能
+    .参数 szTitle, 文本型, , 显示标题.
+    .参数 szExplain, 文本型, 可空, 解释.
+    .参数 pFunc, 整数型, 可空, 响应函数.
+
+    
+
+.子程序 GetFuncNotifySys, 整数型, 公开, 取易功能函数地址.
+    
+
+.子程序 NotifySys, 整数型, 公开, 调用易功能函数.
+    .参数 nMsg, 整数型, , 消息值.参看lib2.h
+    .参数 dwParam1, 整数型
+    .参数 dwParam2, 整数型
+
+    
+
+.子程序 SysGetProgramType, 整数型, 公开, 取程序类型.
+    
+
+.子程序 SysGetExeName, 文本型, 公开, 取执行文件名.
+    
+
+.子程序 SysGetHIDE, 整数型, 公开, 取易语言句柄.
+    
+
+.子程序 SysGetEVersion, 整数型, 公开, 取易语言版本.
+    
+
+.子程序 SysSendError, , 公开, 产生运行错误.
+    .参数 strError, 文本型, , 错误提示.
+
+    
+
+.子程序 SysEndProgram, , 公开, 结束程序.
+    
+
+.子程序 SysCreateCWnd, 整数型, 公开, 创建CWnd指针.
+    .参数 hWnd, 整数型, , 绑定窗口句柄.
+
+    
+
+.子程序 SysGetEPath, 文本型, 公开, 取易语言目录.
+    
+
+.子程序 SysDeleteObj, , 公开, 删除组件.
+    .参数 UnitBasicInfo, UNIT_BASIC_INFO, , 组件基本信息.
+
+    
+
+.子程序 SysNotifyEvent, 整数型, 公开, 产生事件.以第一类方式产生事件, 返回非零值表示用户有代码已经处理.
+    .参数 EventNotifyData, EVENT_NOTIFY, 参考, 事件通知结构.
+
+    
+
+.子程序 SysNotifyEvent2, 整数型, 公开, 产生事件.以第二类方式产生事件, 返回非零值表示用户有代码已经处理.
+    .参数 EventNotify2Data, EVENT_NOTIFY2, 参考, 事件通知结构.
+
+    
+
+.子程序 SysNotifySimpleEvent, 整数型, 公开, 产生无参事件.返回非零值表示用户有代码已经处理.
+    .参数 m_dwFormID, 整数型, , 易组件父窗口ID.
+    .参数 m_dwUnitID, 整数型, , 易组件ID.
+    .参数 m_nEventIndex, 整数型, , 事件索引.
+
+    
+
+.子程序 SysGetHBitmap, 整数型, 公开, 取位图句柄.
+    .参数 sBmp, 字节集, , 位图字节集.
+
+    
+
+.子程序 SysGetBitmapData, 字节集, 公开, 取位图数据.
+    .参数 hBitmap, 整数型, , 位图句柄.
+
+    
+
+.子程序 SysGetWndPtr, 整数型, 公开, 取得CWnd.
+    .参数 pArgInf, 整数型, , 首参数信息指针.
+
+    
+
+.子程序 DebugText, 逻辑型, 公开, 发送调试文本.成功返回真.
+    .参数 strOut, 文本型, , 输出文本.
+
+    
+

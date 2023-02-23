@@ -1,0 +1,23 @@
+﻿{
+    "Address": "",
+    "Author": "SalHe",
+    "BuilderVersion": {
+        "Major": 0,
+        "Minor": 0
+    },
+    "CompilePlugins": "",
+    "Copyright": "",
+    "Description": "用于非入侵式辅助调试查看程序执行过的SQL语句。\r\n仅限于调试模式或者用于非静态编译的程序。\r\n同时，建议您在发布程序时移除相关代码，最好只是用于辅助调试。",
+    "Email": "",
+    "ExportPublicClassMethod": false,
+    "FaxNumber": "",
+    "Homepage": "",
+    "Name": "SQL.Hook",
+    "ReleaseVersion": {
+        "Major": 1,
+        "Minor": 0
+    },
+    "TelephoneNumber": "",
+    "WriteVersion": true,
+    "ZipCode": ""
+}

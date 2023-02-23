@@ -1,0 +1,6 @@
+﻿{
+    "_SALHE_STATIC_LIB_CODE_DEFAULT_TAG": {
+        "Comment": "静态库置入代码_默认标记.Content: jmp 0x38;BIN(\"SalHe's Easy Lib Maker.He is an E-Template.Welcome to use.\");nop;nop;",
+        "IsPublic": false
+    }
+}

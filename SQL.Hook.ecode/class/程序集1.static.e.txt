@@ -1,0 +1,98 @@
+﻿.版本 2
+
+.程序集 程序集1
+.程序集变量 gHandler, 整数型
+.程序集变量 gHookMySql, 增强APIHook类
+
+.子程序 _启动子程序, 整数型, , 请在本子程序中放置易模块初始化代码
+    
+    _临时子程序 () ' 在初始化代码执行完毕后调用测试代码
+    返回 (0) ' 可以根据您的需要返回任意数值
+
+.子程序 _临时子程序
+    ' 本名称子程序用作测试程序用，仅在开发及调试环境中有效，编译发布程序前将被系统自动清空，请将所有用作测试的临时代码放在本子程序中。 ***注意不要修改本子程序的名称、参数及返回值类型。
+    SqlHook_Hook_MySqlFne ()
+
+.子程序 SqlHook_SetHandler, , 公开
+    .参数 handler, 整数型, , 一个返回值；一个#From_XXX参数，5个根据具体情况定的参数。
+
+    gHandler ＝ handler
+
+.子程序 SqlHook_Hook_MySqlFne, 逻辑型, 公开, 此时的Handler定义以及含义参见 CallHandlerForMySql
+    .局部变量 hModule, 整数型
+    .局部变量 pfnGetNewInf, 整数型
+    .局部变量 pLibInfo, 整数型
+    .局部变量 LibInfo, LIB_INFO
+    .局部变量 pCmdInfo, 整数型
+    .局部变量 nCmdCount, 整数型
+    .局部变量 i, 整数型
+    .局部变量 CmdName, 文本型
+    .局部变量 pCmdFuncs, 整数型
+    .局部变量 pCmdFunc, 整数型
+
+    hModule ＝ API_LoadLibraryA (“mysql.fne”)
+    .如果真 (hModule ＝ 0)
+        返回 (假)
+    .如果真结束
+    pfnGetNewInf ＝ API_GetProcAddress (hModule, “GetNewInf”)
+    .如果真 (pfnGetNewInf ＝ 0)
+        返回 (假)
+    .如果真结束
+    pLibInfo ＝ CallN (pfnGetNewInf)
+    .如果真 (pLibInfo ＝ 0)
+        返回 (假)
+    .如果真结束
+    pCmdInfo ＝ PointerToInt (pLibInfo ＋ GetVarPointer2 (LibInfo.m_pBeginCmdInfo) － GetVarPointer (LibInfo))
+    nCmdCount ＝ PointerToInt (pLibInfo ＋ GetVarPointer2 (LibInfo.m_nCmdCount) － GetVarPointer (LibInfo))
+    .计次循环首 (nCmdCount, i)
+        CmdName ＝ 指针到文本 (PointerToInt (pCmdInfo))
+        .如果真 (CmdName ＝ “执行SQL语句”)
+            跳出循环 ()
+        .如果真结束
+        pCmdInfo ＝ pCmdInfo ＋ #SIZEOF_CMD_INFO
+    .计次循环尾 ()
+    .如果真 (i ＞ nCmdCount)
+        返回 (假)
+    .如果真结束
+    pCmdFuncs ＝ PointerToInt (pLibInfo ＋ GetVarPointer2 (LibInfo.m_pCmdsFunc) － GetVarPointer (LibInfo))
+    pCmdFunc ＝ PointerToInt (pCmdFuncs ＋ 4 × (i － 1))
+    返回 (gHookMySql.安装HookByAddr (pCmdFunc, 到整数 (&NewMySqlFne), 真, 真))
+
+.子程序 NewMySqlFne
+    .参数 pRetData, 整数型
+    .参数 nArgCount, 整数型
+    .参数 pArgInf, 整数型
+    .局部变量 SQL, 文本型
+    .局部变量 hMySql, 整数型
+
+    gHookMySql.调用原函数 (pRetData, nArgCount, pArgInf)
+    hMySql ＝ PointerToInt (pArgInf)
+    SQL ＝ 指针到文本 (PointerToInt (pArgInf ＋ 12))
+    .如果真 (gHandler ＝ 0)
+        返回 ()
+    .如果真结束
+    SqlHook_CallHandlerForMySql (hMySql, SQL, PointerToInt (pRetData) ≠ 0)
+
+.子程序 SqlHook_CallHandlerForMySql, 逻辑型, 公开
+    .参数 hMySql, 整数型
+    .参数 Sql, 文本型
+    .参数 Ok, 逻辑型
+
+    返回 (SqlHook_CallHandler (#From_MySqlFne, hMySql, GetStringPointer (Sql), 选择 (Ok, 1, 0)) ≠ 0)
+
+.子程序 SqlHook_CallHandler, 整数型, 公开
+    .参数 from, 整数型, , #From_xxx
+    .参数 arg1, 整数型, 可空
+    .参数 arg2, 整数型, 可空
+    .参数 arg3, 整数型, 可空
+    .参数 arg4, 整数型, 可空
+    .参数 arg5, 整数型, 可空
+
+    ' .如果真 (gHandler ＝ 0)
+        ' 返回 (0)
+    ' .如果真结束
+    ' CallN_15 里有判断
+    
+    ' CallN_15 代码有一定性能损耗，不过考虑到使用场景，不做优化了，可以根据自己情况优化
+    返回 (CallN_15 (gHandler, , from, arg1, arg2, arg3, arg4, arg5))
+

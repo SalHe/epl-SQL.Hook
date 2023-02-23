@@ -1,0 +1,202 @@
+﻿.版本 2
+
+.常量 NULL, "0"
+.常量 SIZEOF_LIB_INFO, "144"
+.常量 SIZEOF_LIB_CONST_INFO, "32"
+.常量 SIZEOF_CMD_INFO, "36"
+.常量 SIZEOF_ARG_INFO, "24"
+.常量 SIZEOF_MDATA_INF, "12"
+.常量 SIZEOF_LIB_DATA_TYPE_INFO, "56"
+.常量 SIZEOF_LIB_DATA_TYPE_ELEMENT, "28"
+.常量 SIZEOF_UNIT_PROPERTY, "20"
+.常量 SIZEOF_EVENT_ARG_INFO2, "16"
+.常量 SIZEOF_EVENT_INFO2, "24"
+.常量 SIZEOF_INT, "4"
+.常量 SIZEOF_BOOL, "1"
+.常量 SIZEOF_SHORT, "2"
+.常量 SIZEOF_LONG, "8"
+.常量 SIZEOF_DATE, "8"
+.常量 SIZEOF_DOUBLE, "8"
+.常量 SIZEOF_BYTE, "1"
+.常量 SIZEOF_LOGFONT, "60"
+.常量 FormatBin_StringFormat_Length, "0", , 格式字节集_文本格式_长度式.先储存文本长度,再储存文本
+.常量 FormatBin_StringFormat_Zero, "1", , 格式字节集_文本格式_零字符结尾.以字符0标识结尾
+.常量 LIB_FORMAT_VER, "20000101", , 库格式号
+.常量 __GBK_LANG_VER, "1", , 中文（使用GBK编码）
+.常量 __ENGLISH_LANG_VER, "2", , 英语
+.常量 __BIG5_LANG_VER, "3", , 中文（使用BIG5编码）
+.常量 __SJIS_JP_LANG_VER, "4", , 日文(使用SJIS编码)
+.常量 __OS_WIN, "-2147483648"
+.常量 __OS_LINUX, "1073741824"
+.常量 __OS_UNIX, "536870912"
+.常量 SIZE_ARG_INFO, "24"
+.常量 SIZE_LIB_DATA_TYPE_ELEMENT, "28"
+.常量 SIZE_UNIT_PROPERTY, "20"
+.常量 SIZE_EVENT_INFO2, "24"
+.常量 SIZE_EVENT_ARG_INFO2, "16"
+.常量 SIZE_LOGFONT, "60"
+.常量 _SDT_NULL, "0", , 空白型
+.常量 _SDT_ALL, "-2147483648", , 通用型
+.常量 SDT_BYTE, "-2147483391", , 字节型
+.常量 SDT_SHORT, "-2147483135", , 短整数型
+.常量 SDT_INT, "-2147482879", , 整数型
+.常量 SDT_INT64, "-2147482623", , 长整数型
+.常量 SDT_FLOAT, "-2147482367", , 小数型
+.常量 SDT_DOUBLE, "-2147482111", , 双精度型
+.常量 SDT_BOOL, "-2147483646", , 逻辑型
+.常量 SDT_DATE_TIME, "-2147483645", , 日期时间型
+.常量 SDT_TEXT, "-2147483644", , 文本型
+.常量 SDT_BIN, "-2147483643", , 字节集
+.常量 SDT_SUB_PTR, "-2147483642", , 子程序指针
+.常量 DTP_COM_OBJECT, "65584", , 对象
+.常量 DTP_VARIANT, "65585", , 变体型
+.常量 DTC_VARIANT_TYPE, "65586", , 变体类型
+.常量 DTM_SYS_DATA_TYPE_MASK, "-2147483648", , 系统类型
+.常量 DTM_USER_DATA_TYPE_MASK, "1073741824", , 用户自定义类型
+.常量 DTM_LIB_DATA_TYPE_MASK, "0", , 库定义数据类型
+.常量 UDTM_USER_DECLARE_MASK, "0", , 用户自定义复合数据类型
+.常量 UDTM_WIN_DECLARE_MASK, "268435456", , 用户自定义窗口类型
+.常量 DTT_IS_NULL_DATA_TYPE, "0", , 空数据类型
+.常量 DTT_IS_SYS_DATA_TYPE, "1", , 系统类型
+.常量 DTT_IS_USER_DATA_TYPE, "2", , 用户自定义类型
+.常量 DTT_IS_LIB_DATA_TYPE, "3", , 库定义数据类型
+.常量 DT_IS_ARY, "536870912", , 是否为数组
+.常量 DT_IS_VAR, "536870912", , 是否为变量
+.常量 LVL_SIMPLE, "1", , 初级
+.常量 LVL_SECONDARY, "2", , 中级
+.常量 LVL_HIGH, "3", , 高级
+.常量 CT_NUM, "1", , 数值型
+.常量 CT_BOOL, "2", , 逻辑型
+.常量 CT_TEXT, "3", , 文本型
+.常量 AS_HAS_DEFAULT_VALUE, "1", , 有默认值
+.常量 AS_DEFAULT_VALUE_IS_EMPTY, "2", , 可空
+.常量 AS_RECEIVE_VAR, "4", , 参数带参考属性
+.常量 AS_RECEIVE_VAR_ARRAY, "8", , 只能提供数组变量
+.常量 AS_RECEIVE_VAR_OR_ARRAY, "16", , 只能提供单一变量或数组变量
+.常量 AS_RECEIVE_ARRAY_DATA, "32", , 只能提供数组数据
+.常量 AS_RECEIVE_ALL_TYPE_DATA, "64", , 可提供数组或非数组数据
+.常量 AS_RECEIVE_VAR_OR_OTHER, "512", , 不可提供数组,其他皆可
+.常量 CT_IS_HIDED, "4", , 命令被隐藏
+.常量 CT_IS_ERROR, "8", , 命令不能被使用
+.常量 CT_DISABLED_IN_RELEASE, "16", , 本命令仅调试状态下可用
+.常量 CT_ALLOW_APPEND_NEW_ARG, "32", , 末尾无限参数
+.常量 CT_RETRUN_ARY_TYPE_DATA, "64", , 命令返回数组数据
+.常量 CT_IS_OBJ_COPY_CMD, "128", , 命令为数据类型复制函数
+.常量 CT_IS_OBJ_FREE_CMD, "256", , 命令为销毁对象函数
+.常量 CT_IS_OBJ_CONSTURCT_CMD, "512", , 命令为数据类型构造函数
+.常量 LDT_IS_HIDED, "1", , 数据类型被隐藏
+.常量 LDT_IS_ERROR, "2", , 数据类型不能使用
+.常量 LDT_WIN_UNIT, "64", , 为窗口或控件数据类型
+.常量 LDT_IS_CONTAINER, "128", , 为容器组件
+.常量 LDT_IS_TAB_UNIT, "256", , 为TAB控件
+.常量 LDT_IS_FUNCTION_PROVIDER, "32768", , 仅用作提供功能的窗口组件
+.常量 LDT_CANNOT_GET_FOCUS, "65536", , 控件不能接收输入焦点
+.常量 LDT_DEFAULT_NO_TABSTOP, "131072", , 控件默认不停留TAB键
+.常量 LDT_ENUM, "4194304", , 为枚举类型
+.常量 LDT_MSG_FILTER_CONTROL, "32", , 为消息过滤组件
+.常量 LES_HAS_DEFAULT_VALUE, "1", , 数据类型成员有初始值
+.常量 LES_HIDED, "2", , 数据类型成员被隐藏
+.常量 NL_SYS_NOTIFY_FUNCTION, "1", , 接收到易功能函数地址
+.常量 NL_FREE_LIB_DATA, "6", , 接收到支持库释放消息
+.常量 NL_GET_CMD_FUNC_NAMES, "14", , 要求返回各命令名称
+.常量 NL_GET_NOTIFY_LIB_FUNC_NAME, "15", , 要求返回信息通知函数名称
+.常量 NL_GET_DEPENDENT_LIBS, "16", , 要求返回依赖lib列表
+.常量 NES_GET_MAIN_HWND, "1", , 取IDE主窗口句柄
+.常量 NES_RUN_FUNC, "2", , 运行指定的功能
+.常量 NES_PICK_IMAGE_INDEX_DLG, "7", , 列出指定图片组内的所有图片
+.常量 NAS_GET_APP_ICON, "1000", , 通知系统创建并返回程序的图标
+.常量 NAS_GET_LIB_DATA_TYPE_INFO, "1002", , 返回指定库定义类型定义信息指针
+.常量 NAS_GET_HBITMAP, "1003", , 创建图片句柄
+.常量 NAS_GET_LANG_ID, "1004", , 返回语言ID
+.常量 NAS_GET_VER, "1005", , 返回当前系统或运行环境的版本号
+.常量 NAS_GET_PATH, "1006", , 取指定路径
+.常量 NAS_CREATE_CWND_OBJECT_FROM_HWND, "1007", , 创建一个CWND对象
+.常量 NAS_DELETE_CWND_OBJECT, "1008", , 删除CWND对象
+.常量 NAS_DETACH_CWND_OBJECT, "1009", , 取消CWND对象与其中HWND的绑定
+.常量 NAS_GET_HWND_OF_CWND_OBJECT, "1010", , 获取CWND对象中的HWND
+.常量 NAS_ATTACH_CWND_OBJECT, "1011", , 将指定HWND与CWND对象绑定起来
+.常量 NAS_IS_EWIN, "1014", , 是否为易语言窗口或组件
+.常量 NRS_UNIT_DESTROIED, "2000", , 通知系统指定的组件已经被销毁
+.常量 NRS_CONVERT_NUM_TO_INT, "2001", , 转换其它数值格式到整数
+.常量 NRS_GET_CMD_LINE_STR, "2002", , 取当前命令行文本
+.常量 NRS_GET_EXE_PATH_STR, "2003", , 取当前执行文件所处目录名称
+.常量 NRS_GET_EXE_NAME, "2004", , 取当前执行文件名称
+.常量 NRS_GET_UNIT_PTR, "2006", , 取组件对象指针
+.常量 NRS_GET_AND_CHECK_UNIT_PTR, "2007", , 取组件对象指针,失败时报错
+.常量 NRS_EVENT_NOTIFY, "2008", , 以第一类方式通知系统产生了事件
+.常量 NRS_DO_EVENTS, "2018", , 通知系统发送所有待处理事件
+.常量 NRS_GET_UNIT_DATA_TYPE, "2022", , 根据窗口或组件返回DATA_TYPE
+.常量 NRS_FREE_ARY, "2023", , 释放指定数组数据
+.常量 NRS_MALLOC, "2024", , 分配指定大小的内存
+.常量 NRS_MFREE, "2025", , 释放已分配的指定内存
+.常量 NRS_MREALLOC, "2026", , 重新分配内存
+.常量 NRS_RUNTIME_ERR, "2027", , 通知系统已经产生运行时错误
+.常量 NRS_EXIT_PROGRAM, "2028", , 通知系统退出用户程序
+.常量 NRS_GET_PRG_TYPE, "2030", , 返回当前用户程序的类型
+.常量 NRS_EVENT_NOTIFY2, "2031", , 以第二类方式通知系统产生了事件
+.常量 NRS_GET_WINFORM_COUNT, "2032", , 返回当前程序的窗体数目
+.常量 NRS_GET_WINFORM_HWND, "2033", , 返回指定窗体的窗口句柄
+.常量 NRS_GET_BITMAP_DATA, "2034", , 返回指定HBITMAP的图片数据
+.常量 NRS_FREE_COMOBJECT, "2035", , 通知系统释放指定的COM对象
+.常量 NRS_CHK_TAB_VISIBLE, "2039", , 选择夹子夹被切换
+.常量 PT_EDIT_VER, "1", , 为用作编辑的版本
+.常量 PT_DEBUG_RUN_VER, "2", , 为DEBUG调试运行版本
+.常量 PT_RELEASE_RUN_VER, "3", , 为RELEASE最终发布版本
+.常量 EV_IS_HIDED, "1", , 事件为隐藏事件
+.常量 EV_IS_MOUSE_EVENT, "2", , 事件为鼠标事件,已废弃
+.常量 EV_IS_KEY_EVENT, "4", , 事件为按键事件
+.常量 EV_RETURN_INT, "8", , 事件返回值为整数型,已废弃
+.常量 EV_RETURN_BOOL, "16", , 事件返回值为逻辑型,已废弃
+.常量 EV_IS_VER2, "-2147483648", , 事件结构为EVENT_INFO2
+.常量 MAX_EVENT2_ARG_COUNT, "12", , 事件可定义的参数个数最大值
+.常量 EAS_IS_BOOL_ARG, "1", , 为逻辑型事件参数,已废弃
+.常量 EAS_BY_REF, "2", , 以参考方式传事件参数值
+.常量 EAV_IS_POINTER, "1", , 事件参数为文本型、字节集型、库定义数据类型(不包括窗口单元及菜单)
+.常量 EAV_IS_WINUNIT, "2", , 事件参数为窗口单元
+.常量 UD_BEGIN, "1000"
+.常量 UD_PICK_SPEC_INT, "1000", , 属性数据为待选整数值
+.常量 UD_INT, "1001", , 属性数据为为整数值
+.常量 UD_DOUBLE, "1002", , 为双精度小数值
+.常量 UD_BOOL, "1003", , 为逻辑型值
+.常量 UD_DATE_TIME, "1004", , 为日期时间型值
+.常量 UD_TEXT, "1005", , 为字符串
+.常量 UD_PICK_INT, "1006", , 为待选整数值
+.常量 UD_PICK_TEXT, "1007", , 为待选字符串
+.常量 UD_EDIT_PICK_TEXT, "1008", , 为可选择可编辑字符串
+.常量 UD_PIC, "1009", , 为图片文件内容
+.常量 UD_ICON, "1010", , 为图标文件内容
+.常量 UD_CURSOR, "1011", , 为鼠标指针
+.常量 UD_MUSIC, "1012", , 为声音文件内容
+.常量 UD_FONT, "1013", , 为字体数据,结构为LOGFONT
+.常量 UD_COLOR, "1014", , 为颜色数据,结构为COLORREF
+.常量 UD_COLOR_TRANS, "1015", , 为颜色数据且允许透明色,结构为COLORREF
+.常量 UD_FILE_NAME, "1016", , 为文件名字符串
+.常量 UD_COLOR_BACK, "1017", , 为颜色数据且允许系统默认背景颜色,结构为COLORREF
+.常量 UD_IMAGE_LIST, "1023", , 为图片组数据
+.常量 UD_CUSTOMIZE, "1024", , 为自定义数据
+.常量 UD_END, "1024"
+.常量 UW_HAS_INDENT, "1", , 属性值缩进一段
+.常量 UW_GROUP_LINE, "2", , 在属性底下显示分组线
+.常量 UW_ONLY_READ, "4", , 属性只可读
+.常量 UW_CANNOT_INIT, "8", , 属性设计时不可用,运行时可读写
+.常量 UW_IS_HIDED, "16", , 属性隐藏但可用
+.常量 COLOR_BTNFACE, "15", , 用于API GetSysColor 获取默认背景色
+.常量 CLR_DEFAULT, "-16777216", , 系统默认背景色或透明色（#默认色；#透明）
+.常量 IMAGE_LIST_DATA_MARK, "1414286665", , 图片组数据结构标志
+.常量 ITF_CREATE_UNIT, "1", , 创建单元
+.常量 ITF_PROPERTY_UPDATE_UI, "2", , 说明属性目前可否被修改
+.常量 ITF_DLG_INIT_CUSTOMIZE_DATA, "3", , 使用对话框设置自定义数据
+.常量 ITF_NOTIFY_PROPERTY_CHANGED, "4", , 通知某属性数据被修改
+.常量 ITF_GET_ALL_PROPERTY_DATA, "5", , 取全部属性数据
+.常量 ITF_GET_PROPERTY_DATA, "6", , 取某属性数据
+.常量 ITF_GET_ICON_PROPERTY_DATA, "7", , 取窗口的图标属性数据
+.常量 ITF_IS_NEED_THIS_KEY, "8", , 询问单元是否需要指定的按键信息
+.常量 ITF_LANG_CNV, "9", , 组件数据语言转换
+.常量 ITF_MSG_FILTER, "11", , 消息过滤
+.常量 ITF_GET_NOTIFY_RECEIVER, "12", , 处理额外通知
+.常量 CNV_NULL, "0", , 空
+.常量 CNV_FONTNAME, "1", , 为转换字体名的语言
+.常量 NU_GET_CREATE_SIZE_IN_DESIGNER, "0", , 指定组件的默认宽度和高度
+.常量 WND_PROP_SALHE_UNIT_INFO, "“SalHeEasyLibMakerUnitInfoAddress”", , 窗口属性_SalHe单元信息.
+.常量 WND_PROP_SALHE_OLD_PROC, "“SalHeEasyLibMakerTransparentContainerOldProc”", , 窗口属性_透明容器旧过程.
+.常量 From_MySqlFne, "1", 公开

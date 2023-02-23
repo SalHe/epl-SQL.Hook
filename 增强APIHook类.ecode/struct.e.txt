@@ -1,0 +1,11 @@
+﻿.版本 2
+
+.数据类型 THREADENTRY32, 公开, 线程信息
+    .成员 dwSize, 整数型
+    .成员 cntUsage, 整数型
+    .成员 th32ThreadID, 整数型
+    .成员 th32OwnerProcessID, 整数型
+    .成员 tpBasePri, 整数型
+    .成员 tpDeltaPri, 整数型
+    .成员 dwFlags, 整数型
+

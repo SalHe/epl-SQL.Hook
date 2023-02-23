@@ -1,0 +1,69 @@
+﻿.版本 2
+
+.DLL命令 API_RtlMoveMemory_读取整数, 整数型, "kernel32", "RtlMoveMemory"
+    .参数 pDestination, 整数型, 传址
+    .参数 pSource, 整数型
+    .参数 Length, 整数型
+
+.DLL命令 API_RtlMoveMemory_写入整数, , "kernel32", "RtlMoveMemory"
+    .参数 Destination, 整数型
+    .参数 Source, 整数型, 传址
+    .参数 Length, 整数型
+
+.DLL命令 API_lstrcpynA_字节集, 整数型, "Kernel32", "lstrcpynA"
+    .参数 lpString1, 字节集
+    .参数 lpString2, 字节集
+    .参数 iMaxLength, 整数型
+
+.DLL命令 API_VirtualProtect, 整数型, "kernel32", "VirtualProtect"
+    .参数 lpAddress, 整数型
+    .参数 dwSize, 整数型
+    .参数 flNewProtect, 整数型
+    .参数 lpflOldProtect, 整数型, 传址
+
+.DLL命令 API_LoadLibraryA, 整数型, "kernel32", "LoadLibraryA"
+    .参数 File, 文本型
+
+.DLL命令 API_GetProcAddress, 整数型, "kernel32", "GetProcAddress"
+    .参数 hModule, 整数型
+    .参数 lpProcName, 文本型
+
+.DLL命令 API_GetThreadPriority, 整数型, "kernel32", "GetThreadPriority", , ,
+    .参数 线程句柄, 整数型
+
+.DLL命令 API_GetCurrentThreadId, 整数型, "kernel32", "GetCurrentThreadId", , ,
+
+.DLL命令 API_GetCurrentThread, 整数型, "kernel32", "GetCurrentThread"
+
+.DLL命令 API_SetThreadPriority, 整数型, "kernel32", "SetThreadPriority"
+    .参数 线程句柄, 整数型
+    .参数 优先权, 整数型
+
+.DLL命令 API_GetCurrentProcessId, 整数型, "kernel32", "GetCurrentProcessId"
+
+.DLL命令 API_CreateToolhelp32Snapshot, 整数型, "kernel32", "CreateToolhelp32Snapshot"
+    .参数 标志, 整数型
+    .参数 进程标识符, 整数型
+
+.DLL命令 API_Thread32First, 逻辑型, "Kernel32", "Thread32First"
+    .参数 hSnapshot, 整数型
+    .参数 lpte, THREADENTRY32
+
+.DLL命令 API_Thread32Next, 逻辑型, "Kernel32", "Thread32Next"
+    .参数 hSnapShot, 整数型
+    .参数 lpte, THREADENTRY32
+
+.DLL命令 API_OpenThread, 整数型, "Kernel32", "OpenThread"
+    .参数 dwDesiredAccess, 整数型
+    .参数 bInheritHandle, 逻辑型
+    .参数 dwThreadId, 整数型
+
+.DLL命令 API_SuspendThread, 整数型, "Kernel32", "SuspendThread"
+    .参数 hThread, 整数型
+
+.DLL命令 API_CloseHandle, 整数型, "Kernel32", "CloseHandle"
+    .参数 hObject, 整数型
+
+.DLL命令 API_ResumeThread, 整数型, "Kernel32", "ResumeThread"
+    .参数 hThread, 整数型
+

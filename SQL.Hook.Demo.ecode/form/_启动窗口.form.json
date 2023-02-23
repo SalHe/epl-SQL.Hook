@@ -1,0 +1,32 @@
+﻿{
+    "Class": "窗口程序集_启动窗口",
+    "Comment": "在程序启动后自动调入本窗口",
+    "Controls": [
+        {
+            "Children": [],
+            "Comment": "",
+            "Cursor": "00000000",
+            "DataType": "窗口",
+            "Disable": false,
+            "ExtensionData": "",
+            "Height": 250,
+            "Left": 50,
+            "Name": "",
+            "Tag": "",
+            "Top": 50,
+            "UnknownBeforeEvents": 0,
+            "UnknownBeforeExtensionData": "0000000000000000000000000000000000000000",
+            "UnknownBeforeLeft": 0,
+            "UnknownBeforeName": "0000000000000000000000000000000000000000",
+            "UnknownBeforeParent": 0,
+            "UnknownBeforeVisible": 0,
+            "Visible": true,
+            "Width": 380
+        }
+    ],
+    "Id": 1375797249,
+    "Menus": [],
+    "Name": "_启动窗口",
+    "UnknownAfterId": 39862288,
+    "UnknownBeforeClass": 39782508
+}

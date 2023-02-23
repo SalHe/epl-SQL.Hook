@@ -1,0 +1,25 @@
+project:
+  name: SQL.Hook
+  version: 1.0
+  description: 用于非入侵式辅助调试查看程序执行过的SQL的模块。
+  author: SalHe
+  repository: https://github.com/SalHe/epl-SQL.Hook
+  homepage: https://github.com/SalHe
+scripts:
+  hello: |-
+    @echo off
+    echo Hello ebuild!
+excludes:
+- '**/*.recover.e'
+- '**/*.ecode/**.e'
+- '**/*.代码/**.e'
+includes:
+- '**/*.e'
+exclude-builds:
+- ./scripts/**/*.e
+e2txt:
+  name-style: English
+  generate-e: true
+build:
+  compiler: Normal
+targets: 

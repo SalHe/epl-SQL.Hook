@@ -1,0 +1,26 @@
+﻿[
+    {
+        "CmdCount": 632,
+        "Guid": "d09f2340818511d396f6aaf844c7e325",
+        "Key": "krnln",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 1,
+        "Name": "系统核心支持库",
+        "Version": {
+            "Major": 5,
+            "Minor": 7
+        }
+    },
+    {
+        "CmdCount": 4,
+        "Guid": "7F54B9CE8887428dBA9CEEB94CEF4C72",
+        "Key": "mysql",
+        "MaxRefConstPos": 0,
+        "MaxRefObjectPos": 0,
+        "Name": "MySQL支持库",
+        "Version": {
+            "Major": 3,
+            "Minor": 0
+        }
+    }
+]

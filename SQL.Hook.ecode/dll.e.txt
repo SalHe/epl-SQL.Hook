@@ -1,0 +1,7 @@
+﻿.版本 2
+
+.DLL命令 CopyMemory_To_LIB_INFO, , , "RtlMoveMemory"
+    .参数 lpvDest, LIB_INFO
+    .参数 lpvSource, 整数型
+    .参数 cbCopy, 整数型
+

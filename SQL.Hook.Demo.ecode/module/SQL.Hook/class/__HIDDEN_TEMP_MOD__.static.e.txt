@@ -1,0 +1,28 @@
+﻿.版本 2
+
+.程序集 __HIDDEN_TEMP_MOD__, , 公开
+.子程序 SqlHook_Hook_MySqlFne, 逻辑型, 公开, 此时的Handler定义以及含义参见 CallHandlerForMySql
+    
+
+.子程序 SqlHook_SetHandler, , 公开
+    .参数 handler, 整数型, , 一个返回值；一个#From_XXX参数，5个根据具体情况定的参数。
+
+    
+
+.子程序 SqlHook_CallHandlerForMySql, 逻辑型, 公开
+    .参数 hMySql, 整数型
+    .参数 Sql, 文本型
+    .参数 Ok, 逻辑型
+
+    
+
+.子程序 SqlHook_CallHandler, 整数型, 公开
+    .参数 from, 整数型, , #From_xxx
+    .参数 arg1, 整数型, 可空
+    .参数 arg2, 整数型, 可空
+    .参数 arg3, 整数型, 可空
+    .参数 arg4, 整数型, 可空
+    .参数 arg5, 整数型, 可空
+
+    
+

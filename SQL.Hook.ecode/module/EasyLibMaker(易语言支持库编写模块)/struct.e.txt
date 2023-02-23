@@ -1,0 +1,165 @@
+﻿.版本 2
+
+.数据类型 LIB_INFO, 公开, 库信息.大小:36*4=144
+    .成员 m_dwLibFormatVer, 整数型, , , 库格式号.
+    .成员 m_szGuid, 文本型, , , 标识符.
+    .成员 m_nMajorVersion, 整数型, , , 本库主版本号.必须大于0
+    .成员 m_nMinorVersion, 整数型, , , 本库次版本号.
+    .成员 m_nBuildNumber, 整数型, , , 构建版本号.
+    .成员 m_nRqSysMajorVer, 整数型, , , 系统主版本号.目前应该为 3
+    .成员 m_nRqSysMinorVer, 整数型, , , 系统次版本号.目前应该为 0
+    .成员 m_nRqSysKrnlLibMajorVer, 整数型, , , 核心支持库主版本号.目前应该为 3
+    .成员 m_nRqSysKrnlLibMinorVer, 整数型, , , 核心支持库次版本号.目前应该为 0
+    .成员 m_szName, 文本型, , , 库名.不能为NULL或空.
+    .成员 m_nLanguage, 整数型, , , 支持语言.1为中文,2为英文.
+    .成员 m_szExplain, 文本型, , , 库说明.
+    .成员 m_dwState, 整数型, , , 库状态.
+    .成员 m_szAuthor, 文本型, , , 作者姓名.
+    .成员 m_szZipCode, 文本型, , , 邮政编码.
+    .成员 m_szAddress, 文本型, , , 通信地址.
+    .成员 m_szPhoto, 文本型, , , 电话号码.
+    .成员 m_szFax, 文本型, , , 传真号码.
+    .成员 m_szEmail, 文本型, , , 电子信箱.
+    .成员 m_szHomePage, 文本型, , , 主页地址.
+    .成员 m_szOther, 文本型, , , 其它信息.
+    .成员 m_nDataTypeCount, 整数型, , , 自定义数据类型数.
+    .成员 m_pDataType, 字节集, , , 自定义数据类型信息.
+    .成员 m_nCategoryCount, 整数型, , , 全局命令类别数.
+    .成员 m_szzCategory, 字节集, , , 全局命令类别表.
+    .成员 m_nCmdCount, 整数型, , , 命令数目.
+    .成员 m_pBeginCmdInfo, 字节集, , , 命令信息.
+    .成员 m_pCmdsFunc, 整数型, , , 命令地址表.
+    .成员 m_pfnRunAddInFn, 整数型, , , 附加功能子程序
+    .成员 m_szzAddInFnInfo, 字节集, , , 附加功能信息.
+    .成员 m_pfnNotify, 整数型, , , 通知信息函数.
+    .成员 m_pfnSuperTemplate, 整数型, , , 超级模板.
+    .成员 m_szzSuperTemplateInfo, 整数型, , , 模板说明.
+    .成员 m_nLibConstCount, 整数型, , , 常量数目.
+    .成员 m_pLibConst, 字节集, , , 常量定义.
+    .成员 m_szzDependFiles, 整数型, , , 依赖文件.
+
+.数据类型 CMD_INFO, 公开, 命令信息.大小:36
+    .成员 m_szName, 文本型, , , 命令中文名称.
+    .成员 m_szEgName, 文本型, , , 命令英文名称.可以为空或NULL
+    .成员 m_szExplain, 文本型, , , 命令详细解释.
+    .成员 m_shtCategory, 短整数型, , , 全局命令的所属类别.从1开始。
+    .成员 m_wState, 短整数型, , , 命令属性.
+    .成员 m_dtRetValType, 整数型, , , 返回值类型.
+    .成员 m_wReserved, 短整数型, , , 未用.
+    .成员 m_shtUserLevel, 短整数型, , , 用户学习难度级别.
+    .成员 m_shtBitmapIndex, 短整数型, , , 指定图像索引.从1开始,0表示无.
+    .成员 m_shtBitmapCount, 短整数型, , , 图像数目.(用作动画)
+    .成员 m_nArgCount, 整数型, , , 参数数目.
+    .成员 m_pBeginArgInfo, 整数型, , , 参数信息.
+
+.数据类型 ARG_INFO, 公开, 参数信息.大小:24
+    .成员 m_szName, 文本型, , , 参数名称.
+    .成员 m_szExplain, 文本型, , , 参数详细解释.
+    .成员 m_shtBitmapIndex, 短整数型, , , 指定图像索引.从1开始,0表示无.
+    .成员 m_shtBitmapCount, 短整数型, , , 图像数目.(用作动画).
+    .成员 m_dtType, 整数型, , , 参数类型.
+    .成员 m_nDefault, 整数型, , , 参数默认值.
+    .成员 m_dwState, 整数型, , , 参数属性.
+
+.数据类型 LIB_CONST_INFO, 公开, 常量信息.大小:32
+    .成员 m_szName, 文本型, , , 常量名称.
+    .成员 m_szEgName, 文本型, , , 英文名称.
+    .成员 m_szExplain, 文本型, , , 常量说明.
+    .成员 m_shtLayout, 短整数型, , , 未知.
+    .成员 m_shtType, 短整数型, , , 常量类型.
+    .成员 m_szText, 文本型, , , 常量文本.
+    .成员 m_null, 整数型, , , 未知.
+    .成员 m_dbValue, 双精度小数型, , , 常量数值.
+
+.数据类型 LIB_DATA_TYPE_INFO, 公开, 库定义数据类型信息.大小:56
+    .成员 m_szName, 文本型, , , 中文名称.
+    .成员 m_szEgName, 文本型, , , 英文名称.
+    .成员 m_szExplain, 文本型, , , 详细解释.
+    .成员 m_nCmdCount, 整数型, , , 命令数目.
+    .成员 m_pnCmdsIndex, 整数型, , , 命令表索引数组.
+    .成员 m_dwState, 整数型, , , 类型属性.
+    .成员 m_dwUnitBmpID, 整数型, , , 图像资源ID.
+    .成员 m_nEventCount, 整数型, , , 事件数目.
+    .成员 m_pEventBegin, 整数型, , , 事件定义数组.
+    .成员 m_nPropertyCount, 整数型, , , 属性数目.
+    .成员 m_pPropertyBegin, 整数型, , , 属性定义数组.
+    .成员 m_pfnGetInterface, 整数型, , , 窗口单元接口函数.
+    .成员 m_nElementCount, 整数型, , , 成员个数.
+    .成员 m_pElementBegin, 整数型, , , 成员定义数组.
+
+.数据类型 LIB_DATA_TYPE_ELEMENT, 公开, 库定义数据类型成员信息.大小:28
+    .成员 m_dtType, 整数型, , , 数据类型.
+    .成员 m_pArySpec, 整数型, , , 数组维数定义串.
+    .成员 m_szName, 文本型, , , 中文名称.
+    .成员 m_szEgName, 文本型, , , 英文名称.
+    .成员 m_szExplain, 文本型, , , 详细说明.
+    .成员 m_dwState, 整数型, , , 成员属性.
+    .成员 m_nDefault, 整数型, , , 默认值.
+
+.数据类型 UNIT_PROPERTY, 公开, 窗口组件属性定义信息.大小:20
+    .成员 m_szName, 文本型, , , 属性名称.
+    .成员 m_szEgName, 文本型, , , 属性英文名称.
+    .成员 m_szExplain, 文本型, , , 属性详细解释.
+    .成员 m_shtType, 短整数型, , , 属性的数据类型.
+    .成员 m_dwState, 短整数型, , , 属性属性.
+    .成员 m_szzPickStr, 字节集, , , 备选文本.
+
+.数据类型 UNIT_PROPERTY_VALUE, 公开, 窗口组件属性值信息.大小:8
+    .成员 Data, 长整数型, , , 数据内容.
+
+.数据类型 EVENT_INFO2, 公开, 窗口组件事件定义信息.大小:24
+    .成员 m_szName, 文本型, , , 事件名称.
+    .成员 m_szExplain, 文本型, , , 事件详细解释.
+    .成员 m_dwState, 整数型, , , 事件属性.
+    .成员 m_nArgCount, 整数型, , , 事件参数数目.
+    .成员 m_pEventArgInfo, 整数型, , , 事件参数信息.
+    .成员 m_dtRetDataType, 整数型, , , 事件返回值类型.
+
+.数据类型 EVENT_ARG_INFO2, 公开, 窗口组件事件参数定义信息.大小:16
+    .成员 m_szName, 文本型, , , 参数名称.
+    .成员 m_szExplain, 文本型, , , 参数详细解释.
+    .成员 m_dwState, 整数型, , , 参数属性.
+    .成员 m_dtDataType, 整数型, , , 参数类型.
+
+.数据类型 EVENT_NOTIFY, 公开, 事件通知结构.大小:44.不支持参数为长整数、双精度小数、日期时间型的事件
+    .成员 m_dwFormID, 整数型, , , 父窗口ID.
+    .成员 m_dwUnitID, 整数型, , , 组件ID.
+    .成员 m_nEventIndex, 整数型, , , 事件索引.
+    .成员 m_nArgCount, 整数型, , , 参数数目.最多5个，以下为各参数值
+    .成员 m_nArgValue1, 整数型, , , 参数1.各参数值只能为变量地址或长度不超过4字节的数据
+    .成员 m_nArgValue2, 整数型, , , 参数2.逻辑型用 1 或 0 表示
+    .成员 m_nArgValue3, 整数型, , , 参数3.
+    .成员 m_nArgValue4, 整数型, , , 参数4.
+    .成员 m_nArgValue5, 整数型, , , 参数5.
+    .成员 m_blHasReturnValue, 逻辑型, , , 是否提供了返回值.
+    .成员 m_nReturnValue, 整数型, , , 事件返回值.
+
+.数据类型 EVENT_NOTIFY2, 公开, 事件通知结构2.大小:216.支持无参数或含有任意类型参数的事件
+    .成员 m_dwFormID, 整数型, , , 父窗口ID.
+    .成员 m_dwUnitID, 整数型, , , 组件ID.
+    .成员 m_nEventIndex, 整数型, , , 事件索引.
+    .成员 m_nArgCount, 整数型, , , 参数数目.最多12个
+    .成员 m_arg, EVENT_ARG_VALUE, , "12", 各参数值.
+    .成员 m_blHasRetVal, 逻辑型, , , 是否提供了返回值.
+    .成员 m_infRetData, 整数型, , , 事件返回值.
+
+.数据类型 EVENT_ARG_VALUE, 公开, 事件参数值结构.大小:16
+    .成员 m_inf, MDATA_INF, , , 参数值.
+    .成员 m_dwState, 整数型, , , 参数属性.
+
+.数据类型 MDATA_INF, 公开, 数据内容.大小:12 pArgInf中每个参数的结构如此所示
+    .成员 Data, 长整数型, , , 参数数据.基本类型为数据本身,非基本类型(包括文本型和字节集)为数据地址
+    .成员 m_dtDataType, 整数型, , , 参数类型.
+
+.数据类型 UNIT_BASIC_INFO, 公开, 窗口控件基本信息.
+    .成员 hUnit, 整数型, , , 窗口CWND对象指针.
+    .成员 hWnd, 整数型, , , 窗口句柄.
+    .成员 pOldFunc, 整数型, , , 原窗口函数.
+    .成员 hParentWnd, 整数型, , , 父窗口句柄.
+    .成员 uID, 整数型, , , 控件ID.
+    .成员 hMenu, 整数型, , , 控件菜单.
+    .成员 dwWinFormID, 整数型, , , 易组件父窗口ID.
+    .成员 dwUnitID, 整数型, , , 易组件ID.
+    .成员 hDesignWnd, 整数型, , , 设计窗口句柄.
+    .成员 blInDesignMode, 逻辑型, , , 是否为设计模式.
+
